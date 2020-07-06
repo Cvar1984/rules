@@ -26,7 +26,13 @@
       name="viewport"
       content="width=device-width, initial-scale=0.1, user-scalable=no"
     />
-    <audio controls autoplay loop id="bg-audio">
+    <audio
+      controls
+      autoplay
+      loop
+      id="bg-audio"
+      title="Rules are meant to be broken"
+    >
       <source
         src="https://cvar1984.github.io/audio/rules-are-meant-to-be-broken.webm"
         type="audio/webm"
@@ -59,7 +65,7 @@
 
       Line.prototype.display = function () {
         context.strokeStyle = "#FB3550";
-        context.lineWidth = 2;
+        context.lineWidth = 3;
         context.beginPath();
         context.moveTo(this.a.x, this.a.y);
         context.lineTo(this.b.x, this.b.y);
@@ -199,7 +205,7 @@
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
 
-        play = true;
+        //play = false;
 
         lines = [];
 
@@ -208,22 +214,24 @@
         addNewLine(margin, margin, margin, h - margin);
         addNewLine(w - margin, margin, w - margin, h - margin);
 
-        draw();
+        //draw();
       }
 
-      function toggleAnim() {
-        play = !play;
-        if (play) draw();
+      function playAll() {
+        //play = !play;
+        play = true;
+        if (play) {
+          audio.play();
+          draw();
+        }
       }
 
       function draw() {
         if (play) window.requestAnimationFrame(draw);
         addNewLine();
       }
-
       window.addEventListener("load", init);
-      window.addEventListener("resize", init);
-      window.addEventListener("click", toggleAnim);
+      window.addEventListener("click", playAll);
     </script>
     <style>
       html {
@@ -244,32 +252,31 @@
       audio {
         display: none;
       }
-      img {
-        display: block;
-        vertical-align: middle;
-        position: absolute;
-        margin: auto;
-        height: 460px;
-        width: 1024px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
       section {
         display: -webkit-box;
         display: flex;
         width: 100vw;
         height: 6vh;
+        vertical-align: middle;
+        text-align: center;
+        font-family: sans-serif;
+      }
+      section img {
+        position: absolute;
+        margin: auto;
+        height: 564px;
+        width: 1024px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       section h2 {
         margin: auto;
-        vertical-align: middle;
         position: relative;
         z-index: 1;
-        font-family: sans-serif;
         font-size: 5vmin;
         font-weight: 700;
-        margin-top: 40%;
+        margin-top: 49%;
       }
       section h2:before,
       section h2:after {
@@ -929,11 +936,8 @@
     </style>
   </head>
   <body oncontextmenu="return false">
-    <img
-      src="https://cvar1984.github.io/images/man.png"
-      onclick="audio.play()"
-    />
     <section>
+      <img src="https://cvar1984.github.io/images/man.png" />
       <h2 data-name="Rules are meant to be broken">
         <span>Rules are meant to be broken</span>
       </h2>
