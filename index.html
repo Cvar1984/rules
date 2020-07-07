@@ -26,20 +26,16 @@
       name="viewport"
       content="width=device-width, initial-scale=0.1, user-scalable=no"
     />
-    <audio
-      controls
-      autoplay
-      loop
-      id="bg-audio"
-      title="Rules are meant to be broken"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <audio controls autoplay loop title="Rules are meant to be broken">
       <source
         src="https://cvar1984.github.io/audio/rules-are-meant-to-be-broken.webm"
         type="audio/webm"
       />
     </audio>
     <script>
-      var audio = document.getElementById("bg-audio");
+      var audio = document.getElementsByTagName("audio")[0];
+      var image = document.getElementsByTagName("img")[0];
       var canvas = document.createElement("canvas"),
         context = canvas.getContext("2d"),
         w,
@@ -64,7 +60,7 @@
       };
 
       Line.prototype.display = function () {
-        context.strokeStyle = "#FB3550";
+        context.strokeStyle = "red";
         context.lineWidth = 3;
         context.beginPath();
         context.moveTo(this.a.x, this.a.y);
@@ -259,7 +255,7 @@
         height: 6vh;
         vertical-align: middle;
         text-align: center;
-        font-family: sans-serif;
+        font-family: 'New Rocker', cursive;
       }
       section img {
         position: absolute;
@@ -293,7 +289,7 @@
       }
       section h2:before {
         left: -5%;
-        color: #ff0000;
+        color: red;
         clip: rect(0, 1350px, 140px, 0);
         -webkit-animation-name: glitchRed;
         animation-name: glitchRed;
@@ -306,7 +302,7 @@
       }
       section h2:after {
         left: 5%;
-        color: #0000ff;
+        color: blue;
         clip: rect(0, 1350px, 50px, 0);
         -webkit-animation-name: glitchBlue;
         animation-name: glitchBlue;
