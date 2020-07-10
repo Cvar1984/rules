@@ -26,7 +26,10 @@
       name="viewport"
       content="width=device-width, initial-scale=0.1, user-scalable=no"
     />
-    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap"
+      rel="stylesheet"
+    />
     <audio controls autoplay loop title="Rules are meant to be broken">
       <source
         src="https://cvar1984.github.io/audio/rules-are-meant-to-be-broken.webm"
@@ -201,25 +204,12 @@
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
 
-        //play = false;
-
         lines = [];
 
         addNewLine(margin, margin, w - margin, margin);
         addNewLine(margin, h - margin, w - margin, h - margin);
         addNewLine(margin, margin, margin, h - margin);
         addNewLine(w - margin, margin, w - margin, h - margin);
-
-        //draw();
-      }
-
-      function playAll() {
-        //play = !play;
-        play = true;
-        if (play) {
-          audio.play();
-          draw();
-        }
       }
 
       function draw() {
@@ -227,7 +217,14 @@
         addNewLine();
       }
       window.addEventListener("load", init);
-      window.addEventListener("click", playAll);
+      window.addEventListener("resize", init);
+      window.addEventListener("click", function () {
+        play = !play;
+        if (play) {
+          audio.play();
+          draw();
+        }
+      });
     </script>
     <style>
       html {
@@ -255,7 +252,7 @@
         height: 6vh;
         vertical-align: middle;
         text-align: center;
-        font-family: 'New Rocker', cursive;
+        font-family: "New Rocker", cursive;
       }
       section img {
         position: absolute;
@@ -318,8 +315,8 @@
         z-index: 1;
         color: white;
         clip: rect(0, 900px, 722px, 56px);
-        -webkit-animation-name: glitchGreen;
-        animation-name: glitchGreen;
+        -webkit-animation-name: glitchWhite;
+        animation-name: glitchWhite;
         -webkit-animation-duration: 4s;
         animation-duration: 4s;
         -webkit-animation-timing-function: linear;
@@ -757,7 +754,7 @@
           clip-path: inset(98% 0 -50% 0);
         }
       }
-      @-webkit-keyframes glitchGreen {
+      @-webkit-keyframes glitchWhite {
         0% {
           -webkit-clip-path: inset(0% 0 0% 0);
           clip-path: inset(0% 0 0% 0);
@@ -843,7 +840,7 @@
           clip-path: inset(98% 0 -50% 0);
         }
       }
-      @keyframes glitchGreen {
+      @keyframes glitchWhite {
         0% {
           -webkit-clip-path: inset(0% 0 0% 0);
           clip-path: inset(0% 0 0% 0);
